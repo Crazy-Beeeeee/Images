@@ -31,10 +31,10 @@ const memories = [
         image: 'https://raw.kkgithub.com/Crazy-Beeeeee/Images/refs/heads/main/images/2023-6-18.png'
     },
     {
-        date: '2023年10月28日',
+        date: '2023年10月21日',
         title: '山野里的小旅行',
         description: '这是我们第一次一起去旅行，俩人骑着一辆电动车，吹着自由的风，去了向往已久的阳朔。清晨工农桥上的日出、轻拂的微风，还有你洋溢着幸福的脸，这一切都成为了我心中最美的画面。后来的我们还一起去了很多地方旅游。',
-        image: 'https://raw.kkgithub.com/Crazy-Beeeeee/Images/refs/heads/main/images/2023-10-28.png'
+        image: 'https://raw.kkgithub.com/Crazy-Beeeeee/Images/refs/heads/main/images/2023-10-21.png'
     },
     {
         date: '2023年11月12日',
