@@ -77,6 +77,12 @@ const memories = [
         title: '圣诞节',
         description: '这一天，我们一起去万象城看"雪"，互相送了彼此圣诞节礼物。手机记录下我们一起看"雪"的画面，很浪漫，很幸福。',
         image: 'https://raw.kkgithub.com/Crazy-Beeeeee/Images/refs/heads/main/images/2024-12-25.png'
+    },
+    {
+        date: '2018年至今',
+        title: '未完待续...',
+        description: '我们的故事还在继续，我们的回忆还在积累，我们的爱还在升温。',
+        image: ''
     }
 ];
 
