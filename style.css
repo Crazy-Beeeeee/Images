@@ -6,10 +6,77 @@
 
 body {
     font-family: 'Ma Shan Zheng', cursive, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #f9f7f7;
+    background-color: #fdfafa;
+    background-image: none;
     color: #333;
     line-height: 1.6;
     padding-bottom: 50px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* 移除之前的静态装饰元素 */
+body::before, body::after,
+.container::before, .container::after {
+    display: none;
+}
+
+/* 添加浮动爱心动画 */
+.floating-hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.heart {
+    position: absolute;
+    color: rgba(226, 124, 124, 0.3);
+    font-size: 20px;
+    animation-name: float-up;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    z-index: -1;
+}
+
+/* 从下往上飘的动画 */
+@keyframes float-up {
+    0% {
+        transform: translateY(100vh) rotate(0deg) scale(0.5);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* 如果您喜欢从上往下掉的效果，可以使用这个动画 */
+@keyframes float-down {
+    0% {
+        transform: translateY(-100px) rotate(0deg) scale(0.5);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg) scale(1.2);
+        opacity: 0;
+    }
 }
 
 header {
@@ -18,7 +85,29 @@ header {
     background: linear-gradient(135deg, #f5b8c0, #ffd5d5);
     color: #fff;
     margin-bottom: 40px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 30px 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before, header::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+header::before {
+    top: -100px;
+    left: -50px;
+}
+
+header::after {
+    bottom: -100px;
+    right: -50px;
 }
 
 .title {
@@ -37,6 +126,30 @@ header {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
+}
+
+/* 添加装饰元素到容器 */
+.container::before {
+    content: '❤';
+    position: absolute;
+    font-size: 70px;
+    color: rgba(226, 124, 124, 0.03);
+    top: 20%;
+    left: -50px;
+    transform: rotate(-20deg);
+    z-index: -1;
+}
+
+.container::after {
+    content: '❤';
+    position: absolute;
+    font-size: 70px;
+    color: rgba(226, 124, 124, 0.03);
+    bottom: 10%;
+    right: -50px;
+    transform: rotate(20deg);
+    z-index: -1;
 }
 
 .memory-card {
@@ -129,9 +242,36 @@ header {
 
 footer {
     text-align: center;
-    padding: 30px;
+    padding: 40px 0;
     font-size: 0.9rem;
     color: #999;
+    position: relative;
+    margin-top: 60px;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(226, 124, 124, 0.5), transparent);
+}
+
+footer p {
+    margin: 0;
+    position: relative;
+    display: inline-block;
+}
+
+footer p::before, footer p::after {
+    content: "~";
+    position: relative;
+    color: #e27c7c;
+    margin: 0 10px;
+    opacity: 0.5;
 }
 
 .memory-image-container {
@@ -205,10 +345,13 @@ footer {
 /* 爱情计时器样式 */
 .love-counter {
     margin-top: 30px;
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 15px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
     display: inline-block;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .love-counter p {

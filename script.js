@@ -59,6 +59,24 @@ const memories = [
         title: '二周年纪念日',
         description: '这是我们在一起两周年纪念日，在这一天，我们一起吃了小火锅，小蛋糕，我送了一个可爱的榴莲花给你，你很喜欢。有你在我身边，我真的很幸福，很开心。',
         image: 'https://raw.kkgithub.com/Crazy-Beeeeee/Images/refs/heads/main/images/2024-6-18.png'
+    },
+    {
+        date: '2024年10月20日',
+        title: '当导游的一天',
+        description: '这一天，你妈妈和你妹妹，还有阿公阿婆来桂林玩，我们在象鼻山等他们。刚开始我非常紧张，后面我们带他们去了东西巷，靖江王府，日月双塔，逍遥楼。在日月双塔的时候你妈妈还帮我们拍了合照，两个人很拘谨并羞涩。后来晚上一起散步回去的时候，你妈妈还记录下了我们，每当我看到这张照片的时候都会很感动。',
+        image: 'https://raw.kkgithub.com/Crazy-Beeeeee/Images/refs/heads/main/images/2024-10-20.png'
+    },
+    {
+        date: '2024年12月4日',
+        title: '火花999天',
+        description: '这一天是我们火花燃起的第999天，我们一起去吃了椿记，互相送彼此纪念日礼物，一场幸福而浪漫的约会。',
+        image: 'https://raw.kkgithub.com/Crazy-Beeeeee/Images/refs/heads/main/images/2024-12-4.png'
+    },
+    {
+        date: '2024年12月25日',
+        title: '圣诞节',
+        description: '这一天，我们一起去万象城看"雪"，互相送了彼此圣诞节礼物。手机记录下我们一起看"雪"的画面，很浪漫，很幸福。',
+        image: 'https://raw.kkgithub.com/Crazy-Beeeeee/Images/refs/heads/main/images/2024-12-25.png'
     }
 ];
 
@@ -121,6 +139,64 @@ function updateCounter() {
     document.getElementById('seconds').textContent = seconds;
 }
 
+// 创建浮动爱心
+function createFloatingHearts() {
+    const container = document.querySelector('.floating-hearts-container');
+    const heartSymbols = ['❤', '💕', '💖', '💘', '💓', '💗', '💝'];
+    const heartCount = 40; // 增加爱心数量，从20增加到40
+    
+    for (let i = 0; i < heartCount; i++) {
+        setTimeout(() => {
+            createHeart(container, heartSymbols);
+        }, i * 800); // 减少间隔时间，从1500ms减少到800ms
+    }
+    
+    // 每15秒重新创建一批爱心
+    setInterval(() => {
+        for (let i = 0; i < heartCount; i++) {
+            setTimeout(() => {
+                createHeart(container, heartSymbols);
+            }, i * 800); // 同样减少间隔时间
+        }
+    }, 30000);
+}
+
+// 创建单个爱心
+function createHeart(container, symbols) {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    
+    // 随机选择爱心符号
+    const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+    heart.innerHTML = randomSymbol;
+    
+    // 随机位置和大小 - 增加最大尺寸
+    const size = Math.random() * 35 + 10; // 10-45px (原来是10-40px)
+    heart.style.fontSize = `${size}px`;
+    heart.style.left = `${Math.random() * 100}%`;
+    
+    // 随机动画时间 - 稍微加快动画速度
+    const animationDuration = Math.random() * 8 + 8; // 8-16秒 (原来是10-20秒)
+    heart.style.animationDuration = `${animationDuration}s`;
+    
+    // 保持同时有上下浮动的爱心
+    if (Math.random() > 0.5) {
+        heart.style.animationName = 'float-up';
+        heart.style.bottom = '-50px';
+    } else {
+        heart.style.animationName = 'float-down';
+        heart.style.top = '-50px';
+    }
+    
+    // 添加到容器中
+    container.appendChild(heart);
+    
+    // 动画结束后移除元素
+    setTimeout(() => {
+        heart.remove();
+    }, animationDuration * 1000);
+}
+
 // 页面加载完成后初始化
 document.addEventListener('DOMContentLoaded', () => {
     createMemoryCards();
@@ -136,4 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 每秒更新一次计时器
     setInterval(updateCounter, 1000);
+    
+    // 初始化浮动爱心
+    createFloatingHearts();
 }); 
