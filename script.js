@@ -4,7 +4,7 @@ const memories = [
         date: '2018年3月份的某一天',
         title: '我们的第一次相遇',
         description: '还记得初二下学期换班的那天下午，命运让我们在162班相遇。从那一刻起，命运的齿轮开始转动，我们的缘分也随之开始。',
-        image: 'https://raw.kkgithub.com/Crazy-Beeeeee/Images/refs/heads/main/images/%E8%9C%9C%E8%9C%82.png'
+        image: 'https://raw.kkgithub.com/Crazy-Beeeeee/Images/refs/heads/main/images/2018-3.png'
     },
     {
         date: '2022年3月',
